@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>도인최고</title>
+	<meta charset="UTF-8" />
+	<script type="text/javascript">
+		/*var i = 0;
+		var arr = new Array();
+			function abc(arg1){
+		if(typeof arg1 === 'number') {
+			var x = document.getElementById("textArea");
+			console.log(x);
+			x.value += arg1;
+		}
+		else if(arg1 === '-'){
+			var arr[i].push(textArea.value);
+			i + 1;
+			var arr[i].push('-');
+			i + 1;
+			console.log(arr[]);
+		}
+		else if(arg1 === '+'){
+			var arr[i].push(textArea.value);
+			i + 1;
+			var arr[i].push('+');
+			i + 1;
+			console.log(arr[]);
+		}
+		else if(arg1 === '*'){
+			var arr[i].push(textArea.value);
+			i + 1;
+			var arr[i].push('*');
+			i + 1;
+		}
+		else if(arg1 === '/'){
+			var arr[i].push(textArea.value);
+			i + 1;
+			var arr[i].push('/');
+			i + 1;
+			console.log(arr[]);
+		}
+		else{
+			alert("ss");
+		}
+		}
+			function abcd(arg2){
+				var splitNum = arg2;
+				
+				var splitNum1 = splitNum.split("-|+|*");
+				console.log(splitNum1);
+				for(var i in splitNum1){
+					var a = splitNum1[i];
+					console.log(a);
+					var splitNum2 = a.split("+");
+					console.log(splitNum2);
+				}
+			
+			}
+
+			*/
+			var number1 ="";
+			var number2 ="";
+			var operator ="";
+
+			function clickNumberButton(arg1) {
+				if(number1 == ""){
+					var currentNumber = getText();
+					if(currentNumber == '0'){
+						setText(arg1);
+					}
+					else{
+						setText(currentNumber+arg1);
+					}
+				}
+				else{
+					var currentNumber = getText();
+					if(number2 ==""){
+						setText(arg1);
+						number2 = arg1;
+					}
+					else{
+						setText(currentNumber+arg1);
+						number2 = getText();
+					}
+				}
+			}
+
+			function clickOperatorButton(arg1){
+				var currentNumber = getText();
+				number1 = currentNumber;
+				operator = arg1;
+			}
+
+			function setText(arg1){
+				var x = document.getElementById("textArea");
+				x.value = arg1;
+			}
+
+			function getText(){
+				var x = document.getElementById("textArea");
+				return x.value;
+			}
+
+			function calculator(){
+				var num1 = Number(number1);
+				var num2 = Number(number2);
+				var num3 = 0;
+				switch(operator){
+					case '*' : 
+						num3 = num1 * num2;
+						break;
+					case '/' : 
+						num3 = num1 / num2;
+						break;
+					case '+' : 
+						num3 = num1 + num2;
+						break;
+					case '-' : 
+						num3 = num1 - num2;
+						break;
+				}
+				number1 = num3;
+				number2 = "";
+
+				setText(num3);
+			}
+			function clear1(){
+				setText("");
+				number1 = "";
+				number2 = "";
+				operator = "";
+			}
+
+	</script>
+</head>
+<body>
+<table border="1" bordercolor = "red">
+	<tr>
+		<td colspan="4">
+			<input id = "textArea" type = "text" value="0">
+			<input id = "buttonEnter" type = "button" value="Calculate" onclick="calculator()">
+			<input id = "buttonClear" type = "button" style="WIDTH:40pt;height:15pt;" value="Clear" onclick="clear1()">
+		<td>
+	</tr>
+	<tr>
+		<td>
+			<input id = "button1" type = "button" value="1" style="WIDTH: 60pt;height:60pt;font-size:25pt;" + onclick="clickNumberButton(1)">
+		</td>
+		<td>
+			<input id = "button2" type = "button" value="2" style="WIDTH: 60pt;height:60pt;font-size:25pt;"+ onclick="clickNumberButton(2)">
+		</td>
+		<td>
+			<input id = "button3" type = "button" value="3" style="WIDTH: 60pt;height:60pt;font-size:25pt;"+ onclick="clickNumberButton(3)">
+		</td>
+		<td>
+			<input id = "buttonSpp" type = "button" value="X" style="WIDTH: 60pt;height:60pt;font-size:25pt;"+ onclick="clickOperatorButton('*')">
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<input id = "button4" type = "button" value="4" style="WIDTH: 60pt;height:60pt;font-size:25pt;"+ onclick="clickNumberButton(4)">
+		</td>
+		<td>
+			<input id = "button5" type = "button" value="5" style="WIDTH: 60pt;height:60pt;font-size:25pt;"+ onclick="clickNumberButton(5)">
+		</td>
+		<td>
+			<input id = "button6" type = "button" value="6" style="WIDTH: 60pt;height:60pt;font-size:25pt;"+ onclick="clickNumberButton(6)">
+		</td>
+		<td>
+			<input id = "buttonMin" type = "button" value="-" style="WIDTH: 60pt;height:60pt;font-size:25pt;"+ onclick="clickOperatorButton('-')">
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<input id = "button7" type = "button" value="7" style="WIDTH: 60pt;height:60pt;font-size:25pt;"+ onclick="clickNumberButton(7)">
+		</td>
+		<td>
+			<input id = "button8" type = "button" value="8" style="WIDTH: 60pt;height:60pt;font-size:25pt;"+ onclick="clickNumberButton(8)">
+		</td>
+		<td>
+			<input id = "button9" type = "button" value="9" style="WIDTH: 60pt;height:60pt;font-size:25pt;"+ onclick="clickNumberButton(9)">
+		</td>
+		<td>
+			<input id = "buttonplus" type = "button" value="+" style="WIDTH: 60pt;height:60pt;font-size:25pt;"+ onclick="clickOperatorButton('+')">
+		</td>
+	</tr>
+	<tr>
+	</tr>
+		<td>
+			<input id = "button9" type = "button" value="0" style="WIDTH: 60pt;height:60pt;font-size:25pt;"+ onclick="clickNumberButton(0)">
+		</td>
+		<td>
+			<input id = "buttondiv" type = "button" value="/" style="WIDTH: 60pt;height:60pt;font-size:25pt;"+ onclick="clickOperatorButton('/')">
+		</td>
+		</tr>
+</table>
+<script type="text/javascript">
+</script>
+</body>
+</html>
