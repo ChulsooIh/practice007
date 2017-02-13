@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>
+		류도인 짱짱
+	</title>
+	<script type="text/javascript">
+  	var infoBook = new Array();
+
+		function clickSubmit(name, contact, date, intro) {
+			var information = {
+				name : name,
+				contact : contact,
+				date : date,
+				intro : intro
+			}
+      infoBook.push(information);
+      showList();
+		}
+
+		function showList(){
+			var introArea = document.getElementById("introHere");
+			introArea.innerHTML = '';
+			for(i in infoBook){
+				var btn = createButton(infoBook[i]);
+				introArea.appendChild(btn);
+			}
+		}
+
+		function createButton(info){
+			var btn = document.createElement("div");
+			var t = document.createTextNode(info.name);
+			btn.appendChild(t);
+			btn.onclick = function(){
+				nameArea2.value = info.name;
+				contactArea2.value = info.contact;
+				dateArea2.value = info.date;
+				introArea2.value = info.intro;
+			}
+			console.log(btn);
+			return btn;
+		}
+	</script>
+</head>
+<body>
+<table>
+<caption>자취방 출입 기록</caption>
+	<tr>
+		<th>이름</th>
+		<td><input id = "nameArea" type = "text" value=""></td>
+		<th>연락처</th>
+		<td><input id = "contactArea" type = "text" value=""></td>
+	</tr>
+	<tr>
+		<th>날짜</th>
+		<td colspan="3"><input id = "dateArea" type = "text" size="55" value=""></td>
+	</tr>
+	<tr>
+		<th>자기소개</th>
+		<td colspan="3"><input id = "introArea" type = "text" size="55" value=""></td>
+	</tr>	
+</table>
+	<br><input id = "submitButton" type = "submit" value="등록" onclick="clickSubmit(nameArea.value, contactArea.value, dateArea.value, introArea.value)">
+	<hr>
+	<table>
+	<caption>방문객 정보</caption>
+	<tr>
+		<th>이름</th>
+		<td><input id = "nameArea2" type = "text" value=""></td>
+		<th>연락처</th>
+		<td><input id = "contactArea2" type = "text" value=""></td>
+	</tr>
+	<tr>
+		<th>날짜</th>
+		<td colspan="3"><input id = "dateArea2" type = "text" size="55" value=""></td>
+	</tr>
+	<tr>
+		<th>자기소개</th>
+		<td colspan="3"><input id = "introArea2" type = "text" size="55" value=""></td>
+	</tr>	
+</table>
+<div>
+<p>방문객(클릭)</p>
+<div id = "introHere"></div>
+</div>
+</body>
+</html>
